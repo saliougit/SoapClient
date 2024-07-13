@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Utilisateurs</title>   
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+
+    <div class="w-full mx-auto">
+
+        <div>
+            <nav class="bg-white">
+                <div class=" mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between h-16">
+                        <div class="flex items-end">
+                           
+                            <div class="flex">
+                                <a href="/users/list" class="inline-block border-b-2 border-[#18534F] text-gray-900 px-1 pt-1 text-xl   font-bold">USERADMIN</a>
+                            </div>
+                        </div>
+                        <div class="hidden sm:ml-6 sm:flex sm:items-end">
+                            <div class="flex">
+                                <a href="/logout" class="inline-block border-b-2 border-[#18534F] text-gray-900  text-xl   font-bold">Se deconnecter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class=" py-12 px-4 sm:px-6 lg:px-8">
+            <div class="">
+                <h2 class="text-3xl font-bold text-gray-800 mb-10">Bienvenue, Saliou Niane</span></h2>
+            </div>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Liste des Utilisateurs</h2>
+                <a href="/users/add" class="inline-block   bg-[#18534F] hover:bg-[#226D68]  text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50  ">Ajouter un Utilisateur</a>
+            </div>
+            <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr class=" bg-[#18534F] hover:bg-[#226D68]">
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-white">ID</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-white">Nom</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-white">Prénom</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-white">Email</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-white">Role</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-white">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <!-- Utilisation de Thymeleaf pour itérer sur la liste des utilisateurs -->
+                        <tr th:each="user : ${users}">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900" th:text="${user.id}"></div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900" th:text="${user.nom}"></div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900" th:text="${user.prenom}"></div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900" th:text="${user.email}"></div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900" th:text="${user.role}"></div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a th:href="@{/users/update/{id}(id=${user.id})}" class="text-indigo-600 hover:text-indigo-900 mr-4">Edit</a>
+                                <a th:href="@{/users/delete/{id}(id=${user.id})}" class="text-red-600 hover:text-red-900">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

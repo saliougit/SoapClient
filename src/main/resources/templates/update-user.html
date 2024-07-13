@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mettre à jour un Utilisateur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+    <div class="w-full max-w-2xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white shadow-lg sm:rounded-lg p-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Mettre à jour un Utilisateur</h2>
+            <form th:action="@{/users/update}" th:object="${user}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-4">
+                    <label for="nom" class="block text-sm font-medium text-gray-700">Nom</label>
+                    <input type="text" id="nom" th:field="*{nom}" class="mt-1 block w-full border-gray-300 p-2 border rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                </div>
+                <div class="mb-4">
+                    <label for="prenom" class="block text-sm font-medium text-gray-700">Prénom</label>
+                    <input type="text" id="prenom" th:field="*{prenom}" class="mt-1 block w-full border-gray-300 p-2 border rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                    <input type="email" id="email" th:field="*{email}" class="mt-1 block w-full border-gray-300 p-2 border rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                </div>
+                <div class="mb-4">
+                    <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+                    <input type="text" id="role" th:field="*{role}" class="mt-1 block w-full border-gray-300 p-2 border rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <a href="/users/list" class="bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">Annuler</a>
+                    <button type="submit" class=" bg-[#18534F] hover:bg-[#226D68] text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Mettre à jour</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
