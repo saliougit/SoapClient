@@ -20,18 +20,21 @@ public class AuthController {
         return "redirect:/login";
     }
 
-    @GetMapping("/login")
-    public String loginForm() {
-        return "login"; // Affiche le formulaire de login
-    }
+    // logout
 
     @GetMapping("/logout")
     public String logout() {
         return "redirect:/login";
     }
 
-    @PostMapping("/login")
+
+    @GetMapping("/login")
+    public String loginForm() {
+        return "login";
+    }
     
+
+    @PostMapping("/login")
     public String loginSubmit(@RequestParam String email, @RequestParam String password, Model model) {
 
     
